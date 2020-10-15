@@ -193,7 +193,7 @@ function checkImmobile () {
  * @function format 参照中のDateオブジェクトを任意の形式に変換する
  * @return {Array<String>} 指定形式([ YYYY/MM/DD, hh:mm ])に変換されたrefDate
  */
-function format (refDate) {
+function format () {
   return [
    `${refDate.getFullYear()}/${`${refDate.getMonth() + 1}`.padStart(2, '0')}/${`${refDate.getDate()}`.padStart(2, '0')}`,
    `${`${refDate.getHours()}`.padStart(2, '0')}:${`${refDate.getMinutes()}`.padStart(2, '0')}`
