@@ -2,6 +2,7 @@
  * @overview e3s-core@1.0.js E3Sの制御プログラム
  * @author Refrain <refrain.net@gmail.com>
  * @since 2020/10/1
+ * @update 2020/10/15 pad0の廃止
  * @version 1.0
  * @copyright (c) Copyright 2020 Refrain All Rights Reserved.
  */
@@ -192,21 +193,22 @@ function checkImmobile () {
  * @function format 参照中のDateオブジェクトを任意の形式に変換する
  * @return {Array<String>} 指定形式([ YYYY/MM/DD, hh:mm ])に変換されたrefDate
  */
-function format () {
+function format (refDate) {
   return [
-    `${refDate.getFullYear()}/${pad0(refDate.getMonth() + 1, 2)}/${pad0(refDate.getDate(), 2)}`,
-    `${pad0(refDate.getHours(), 2)}:${pad0(refDate.getMinutes(), 2)}`
+   `${refDate.getFullYear()}/${`${refDate.getMonth() + 1}`.padStart(2, '0')}/${`${refDate.getDate()}`.padStart(2, '0')}`,
+   `${`${refDate.getHours()}`.padStart(2, '0')}:${`${refDate.getMinutes()}`.padStart(2, '0')}`
   ];
 }
 /**
+ * @deprecated ES8でのString#padStartが実装された為
  * @function pad0 数値の先頭を0で埋め、指定の桁数で返す
  * @argument {Number} value 0で埋める値
  * @argument {Number} length 切り取る桁数
  * @return {String} 0で埋めて切り取られた文字列
  */
-function pad0 (value, length) {
-  return ('0'.repeat(length) + value).slice(-length);
-}
+//function pad0 (value, length) {
+//  return ('0'.repeat(length) + value).slice(-length);
+//}
 /**
  * @function arr2table 得られた日程データをテーブルに出力する
  */
