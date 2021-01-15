@@ -69,7 +69,7 @@ function onClick (event) {
       break;
     case dJLELTrV:
       /** @summary HTML要素をクリップボードにコピーする */
-      this.copy();
+      YR6JWQam.copy();
       break;
     default:
       break;
