@@ -3,7 +3,7 @@
  * @author Refrain <refrain.net@gmail.com>
  * @since 2020/10/1
  * @update 2020/10/15 pad0の廃止
- * @version 1.0
+ * @version 1.1
  * @copyright (c) Copyright 2020 Refrain All Rights Reserved.
  */
 'use strict';
