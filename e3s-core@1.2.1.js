@@ -113,7 +113,7 @@ function init () {
  *              16. 経過時間が上限に達しているかを返し、親ループを制御する
  */
 function main () {
-  if (loop > 0) {                                                                                         // 1
+  if (loopCount > 0) {                                                                                    // 1
     do {
       refDate.setDate(refDate.getDate() + 1);                                                             // 2
       spanOffset += 24;                                                                                   // 3
