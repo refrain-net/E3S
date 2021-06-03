@@ -24,6 +24,7 @@ $border-gray: solid 0.1rem $gray;
 $border-white: solid 0.1rem $white;
 $color: $black;
 $font: 10px serif;
+$max-width: 34rem;
 $breakpoints: (
   'pc': 'screen and (min-width: 1024px)'
 );
@@ -46,7 +47,7 @@ html {
 body {
   line-height: 1;
   margin: 0 auto;
-  max-width: 51.2rem;
+  max-width: $max-width;
 }
 #XHEEOREH {
   background: $lightgray;
@@ -59,7 +60,7 @@ body {
   grid-template-columns: 1.95rem 8rem 5rem 2rem 2rem 4rem 2rem 7rem 1.95rem;
   grid-template-rows: 1.95rem 2rem 2rem 2rem 2rem 2rem 1.95rem;
   height: 14rem;
-  width: 34rem;
+  width: $max-width;
   button:active, input, span {
     border-bottom: $border-white;
     border-left: $border-gray;
@@ -90,7 +91,7 @@ body {
 }
 #YR6JWQam {
   border-collapse: collapse;
-  width: 34rem;
+  width: $max-width;
   thead {
     border-bottom: $border-black;
     border-bottom-style: double;
