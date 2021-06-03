@@ -1,16 +1,9 @@
 ---
 ---
 
-/**
- * @overview style.scss E3Sのスタイルシート
- * @author Refrain <refrain.tech@gmail.com>
- * @since 2020/9/1
- * @update 2020/10/15 CSSからSCSSに変更
- * @update 2021/6/3 common.cssからE3Sで使用しているCSSを移植
- * @version 1.0
- * @copyright (c) Copyright 2020 Refrain All Rights Reserved.
- */
 @charset 'utf-8';
+
+@import '/res/variables.scss';
 
 $border-black: solid 0.1rem $black;
 $border-gray: solid 0.1rem $gray;
