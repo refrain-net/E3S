@@ -15,17 +15,19 @@
 /** @type {number[] | string[]} 走査中に得られたデータの保存先 */
 const CACHE_DATA = [];
 /** @type {string[]} 設備が動いていない期間のリスト */
-const IM_LIST = [];
+const IMMOBILE_LIST = [];
 /** @type {string[]} 休日のリスト */
-const HO_LIST = [];
+const HOLIDAYS_LIST = [];
 /** @type {RegExp} フォーマット確認用の正規表現 */
-const IM_PATTERN = /^\d{4}\/\d{2}\/\d{2}\s\d{2}:\d{2}~\d{4}\/\d{2}\/\d{2}\s\d{2}:\d{2}_.+$/;
+const IMMOBILE_PATTERN = /^\d{4}\/\d{2}\/\d{2}\s\d{2}:\d{2}~\d{4}\/\d{2}\/\d{2}\s\d{2}:\d{2}_.+$/;
 /** @type {RegExp} フォーマット確認用の正規表現 */
-const HO_PATTERN = /^\d{4}\/\d{2}\/\d{2}$/;
+const HOLIDAYS_PATTERN = /^\d{4}\/\d{2}\/\d{2}$/;
 /** @type {number} 試験を中断する時間 */
 const HOUR_OF_PAUSE = 9;
 /** @type {number} 試験を再開する時間 */
 const HOUR_OF_RESTART = 17;
+/** @type {number} 試験を中断している時間 */
+const HOUR_OF_PAUSING = HOUR_OF_RESTART - HOUR_OF_PAUSE;
 
 /** @type {Date} 試験開始時点のDateオブジェクト */
 let baseDate;
@@ -59,8 +61,8 @@ async function loadConfig (file) {
   const text = await readFile(file);
   text.replace(/\r/g, '').split('\n').forEach(function (currentValue) {
     /** @summary 正規表現で値をテストし、結果に応じてデータを加工・格納する */
-    if (IM_PATTERN.test(currentValue)) IM_LIST.push(currentValue.split(/[~_]/));
-    else if (HO_PATTERN.test(currentValue)) HO_LIST.push(currentValue);
+    if (IMMOBILE_PATTERN.test(currentValue)) IMMOBILE_LIST.push(currentValue.split(/[~_]/));
+    else if (HOLIDAYS_PATTERN.test(currentValue)) HOLIDAYS_LIST.push(currentValue);
   });
 }
 
@@ -88,6 +90,7 @@ function readFile (file) {
  * @function init
  */
 function init () {
+  CACHE_DATA.length = 0;
   baseDate = new Date(`${iophZzyF.value}/${GFZYmEFU.value}/${QR0Oq3bL.value} ${az1m1nnB.value}:${NMQr9RMs.value}`);
   refDate = new Date(baseDate);
   baseTime = parseInt(H0jP0Xr4.value);
@@ -95,16 +98,16 @@ function init () {
   limitTime = parseInt(UJNWVR0g.value);
   loopOffset = parseInt(baseTime / spanTime);
   spanOffset = 0;
-  disableTime = -7 * loopOffset;
+  disableTime = -1 * HOUR_OF_PAUSING * loopOffset;
   loopCount = 0;
   totalTime = 0;
-  CACHE_DATA.length = 0;
   YR6JWQam.querySelector('tbody').innerHTML = '';
 }
 
 /**
- * 日程演算のメイン部
+ * 日程演算を実行する
  * @function main
+ * @returns {boolean}
  */
 function main () {
   if (loopCount > 0) addDateIfDateIsHoliday();
@@ -143,7 +146,7 @@ function addDateIfDateIsHoliday () {
  * @returns {boolean}
  */
 function refDateIsHoliday () {
-  return HO_LIST.includes(getFormatedDateValue()[0]) || refDate.isWeekend();
+  return HOLIDAYS_LIST.includes(getFormatedDateValue()[0]) || refDate.isWeekend();
 }
 
 /**
@@ -152,8 +155,8 @@ function refDateIsHoliday () {
  * @returns {string[]}
  */
 function getFormatedDateValue () {
-  const ymd = `${refDate.getFullYear()}/${`${refDate.getMonth() + 1}`.padStart(2, '0')}/${`${refDate.getDate()}`.padStart(2, '0')}`;
-  const hm = `${`${refDate.getHours()}`.padStart(2, '0')}:${`${refDate.getMinutes()}`.padStart(2, '0')}`;
+  const ymd = `${refDate.getFullYear()}/${String(refDate.getMonth() + 1).padStart(2, '0')}/${String(refDate.getDate()).padStart(2, '0')}`;
+  const hm = `${String(refDate.getHours()).padStart(2, '0')}:${String(refDate.getMinutes()).padStart(2, '0')}`;
   return [ymd, hm];
 }
 
@@ -182,7 +185,7 @@ function setDate (hour) {
  * @returns {number} (現在時刻 - 開始時刻) - 中断させていた時間 x ループ回数 - 停止させていた時間 + 初期に経過していた時間
  */
 function getTotalTime () {
-  return ms2hr(refDate.getTime() - baseDate.getTime()) - (HOUR_OF_RESTART - HOUR_OF_PAUSE) * getLoopCount() - disableTime + baseTime;
+  return ms2hr(refDate.getTime() - baseDate.getTime()) - HOUR_OF_PAUSING * getLoopCount() - disableTime + baseTime;
 }
 
 /**
@@ -210,8 +213,7 @@ function getLoopCount () {
  * @returns {boolean}
  */
 function refDateIsImmobile () {
-  for (const [stop, restart, reason] of IM_LIST) {
-    /** @summary refDateの日付と停止日が一致しなければループを再開する */
+  for (const [stop, restart, reason] of IMMOBILE_LIST) {
     if (getFormatedDateValue()[0] !== stop.split(' ')[0]) continue;
     refDate = new Date(stop);
     saveScheduleDateToCache();
