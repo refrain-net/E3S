@@ -11,7 +11,7 @@
 
 'use strict';
 
-/** @type {HTMLElement} HTML要素を取得する */
+/** @type {HTMLElement} HTML要素 */
 const cXXeUh7g = document.querySelector('#cXXeUh7g');
 const JdVP0JG2 = document.querySelector('#JdVP0JG2');
 const H0jP0Xr4 = document.querySelector('#H0jP0Xr4');
@@ -37,9 +37,10 @@ document.addEventListener('dragover', onDragover, false);
 document.addEventListener('drop', onDrop, false);
 
 /**
- * @function onChange changeイベント用の関数
- * @param {Event} event changeイベント
- * @this {HTMLElement} イベントの発生したHTML要素
+ * changeイベント
+ * @function onChange
+ * @param {Event} event
+ * @this {HTMLElement}
  */
 function onChange (event) {
   switch (this) {
@@ -52,9 +53,10 @@ function onChange (event) {
 }
 
 /**
- * @function onClick clickイベント用の関数
- * @param {Event} event clickイベント
- * @this {HTMLElement} イベントの発生したHTML要素
+ * clickイベント
+ * @function onClick
+ * @param {Event} event
+ * @this {HTMLElement}
  */
 function onClick (event) {
   switch (this) {
@@ -62,7 +64,6 @@ function onClick (event) {
       cXXeUh7g.click();
       break;
     case F8tWfFbD:
-      /** @summary Dateオブジェクトを作成し、各値をinput要素に設定する */
       const date = new Date();
       iophZzyF.value = date.getFullYear();
       GFZYmEFU.value = date.getMonth() + 1;
@@ -75,7 +76,6 @@ function onClick (event) {
       while (main());
       break;
     case dJLELTrV:
-      /** @summary HTML要素をクリップボードにコピーする */
       YR6JWQam.copy();
       break;
     default:
@@ -84,9 +84,10 @@ function onClick (event) {
 }
 
 /**
- * @function onDragover dragoverイベント用の関数
- * @param {Event} event dragoverイベント
- * @this {HTMLElement} イベントの発生したHTML要素
+ * dragoverイベント
+ * @function onDragover
+ * @param {Event} event
+ * @this {HTMLElement}
  */
 function onDragover (event) {
   switch (this) {
@@ -101,9 +102,10 @@ function onDragover (event) {
 }
 
 /**
- * @function onDrop dropイベント用の関数
- * @param {Event} event dropイベント
- * @this {HTMLElement} イベントの発生したHTML要素
+ * dropイベント
+ * @function onDrop
+ * @param {Event} event
+ * @this {HTMLElement}
  */
 function onDrop (event) {
   switch (this) {
