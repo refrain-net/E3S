@@ -11,7 +11,7 @@
 
 'use strict';
 
-/** @type {HTMLElement} HTML要素 */
+/** @type {HTMLElement} HTML要素を取得する */
 const cXXeUh7g = document.querySelector('#cXXeUh7g');
 const JdVP0JG2 = document.querySelector('#JdVP0JG2');
 const H0jP0Xr4 = document.querySelector('#H0jP0Xr4');
