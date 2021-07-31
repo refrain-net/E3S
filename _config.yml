@@ -1,0 +1,5 @@
+plugins:
+  - jekyll-sitemap
+sass:
+  sass_dir: /res
+  style: expanded
