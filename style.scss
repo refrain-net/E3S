@@ -3,7 +3,19 @@
 
 @charset "utf-8";
 
-@import "vars";
+$white: rgb(239, 239, 239);
+$lightgray: rgb(223, 223, 223);
+$gray: rgb(127, 127, 127);
+$darkgray: rgb(31, 31, 31);
+$black: rgb(15, 15, 15);
+$background: $white;
+$color: $black;
+$font: 10px serif;
+
+$border-black: solid 0.1rem $black;
+$border-gray: solid 0.1rem $gray;
+$border-white: solid 0.1rem $white;
+$max-width: 34rem;
 
 html {
   background: $background;
