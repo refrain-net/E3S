@@ -1,5 +1,4 @@
-plugins:
-  - jekyll-sitemap
+
 sass:
-  sass_dir: /res
+  sass_dir: https://refrain-net.github.io/res
   style: expanded
