@@ -151,6 +151,8 @@ function onLoad (event) {
       QR0Oq3bL.value = date;
       az1m1nnB.value = hour;
       NMQr9RMs.value = minute;
+      init();
+      while (main());
       break;
     default:
       break;
