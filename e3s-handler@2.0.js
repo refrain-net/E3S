@@ -5,8 +5,8 @@
  * @update 2021/1/16 onCopyの廃止
  * @update 2021/5/11 DnD対象をファイルのみに変更
  * @update 2021/7/28 書式の調整
- * @update 2021/8/5 URLパラメータによる自動生成機能の実装
- * @version 1.2.1
+ * @update 2021/8/6 URLパラメータによる自動生成機能の実装
+ * @version 2.0
  * @copyright (c) Copyright 2020 Refrain All Rights Reserved.
  */
 
