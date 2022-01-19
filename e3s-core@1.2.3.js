@@ -1,12 +1,12 @@
 /**
- * @overview e3s-core@1.2.2.js E3Sの制御プログラム
+ * @overview e3s-core@1.2.3.js E3Sの制御プログラム
  * @author Refrain <refrain.net@gmail.com>
  * @since 2020/10/1
  * @update 2020/10/15 pad0の廃止
  * @update 2021/5/11 中断から再開まで1日開けられるように変更
  * @update 2021/5/29 書式の調整・途中から開始すると発生する計算誤差の修正
  * @update 2021/7/28 書式の調整・中断時間を10時から9時に変更
- * @update 2022/1/19 書式の調整
+ * @update 2022/1/20 書式の調整
  * @version 1.2.3
  * @copyright (c) Copyright 2020 Refrain All Rights Reserved.
  */
