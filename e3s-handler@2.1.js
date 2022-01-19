@@ -1,12 +1,12 @@
 /**
- * @overview e3s-handler@2..js E3Sのイベント系統の制御プログラム
+ * @overview e3s-handler@2.1.js E3Sのイベント系統の制御プログラム
  * @author Refrain <refrain.net@gmail.com>
  * @since 2020/10/1
  * @update 2021/1/16 onCopyの廃止
  * @update 2021/5/11 DnD対象をファイルのみに変更
  * @update 2021/7/28 書式の調整
  * @update 2021/8/6 URLパラメータによる自動生成機能の実装
- * @update 2022/1/19 書式の調整・自動生成機能の修正
+ * @update 2022/1/20 書式の調整・自動生成機能の修正
  * @version 2.1
  * @copyright (c) Copyright 2020 Refrain All Rights Reserved.
  */
@@ -50,8 +50,6 @@ function onChange (event) {
     case cXXeUh7g:
       loadConfig(this.files[0]);
       break;
-    default:
-      break;
   }
 }
 
@@ -81,8 +79,6 @@ function onClick (event) {
     case dJLELTrV:
       YR6JWQam.copy();
       break;
-    default:
-      break;
   }
 }
 
@@ -98,8 +94,6 @@ function onDragover (event) {
       event.stopPropagation();
       event.preventDefault();
       event.dataTransfer.dropEffect = 'copy';
-      break;
-    default:
       break;
   }
 }
@@ -118,8 +112,6 @@ function onDrop (event) {
       event.stopPropagation();
       event.preventDefault();
       loadConfig(file);
-      break;
-    default:
       break;
   }
 }
@@ -154,8 +146,6 @@ function onLoad (event) {
       NMQr9RMs.value = minute;
       init();
       while (main());
-      break;
-    default:
       break;
   }
 }
