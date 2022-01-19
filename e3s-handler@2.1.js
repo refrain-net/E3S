@@ -1,13 +1,13 @@
 /**
- * @overview e3s-handler@2.0.js E3Sのイベント系統の制御プログラム
+ * @overview e3s-handler@2..js E3Sのイベント系統の制御プログラム
  * @author Refrain <refrain.net@gmail.com>
  * @since 2020/10/1
  * @update 2021/1/16 onCopyの廃止
  * @update 2021/5/11 DnD対象をファイルのみに変更
  * @update 2021/7/28 書式の調整
  * @update 2021/8/6 URLパラメータによる自動生成機能の実装
- * @update 2022/1/19 書式の調整
- * @version 2.0.1
+ * @update 2022/1/19 書式の調整・自動生成機能の修正
+ * @version 2.1
  * @copyright (c) Copyright 2020 Refrain All Rights Reserved.
  */
 
@@ -134,6 +134,8 @@ function onDrop (event) {
 function onLoad (event) {
   switch (this) {
     case window:
+      const params = document.getParameters();
+      if (!params) return;
       const {base = 0,
              limit = 1000,
              step = 250,
@@ -141,7 +143,7 @@ function onLoad (event) {
              month = 1,
              date = 1,
              hour = 17,
-             minute = 0} = document.getParameters();
+             minute = 0} = params;
       H0jP0Xr4.value = base;
       UJNWVR0g.value = limit;
       ZHgPpUJS.value = step;
