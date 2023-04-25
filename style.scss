@@ -8,7 +8,7 @@ $darkgray: rgb(31, 31, 31);
 $black: rgb(15, 15, 15);
 $background: $white;
 $color: $black;
-$font: 10px serif;
+$font: 16px serif;
 
 $border-black: solid 0.1rem $black;
 $border-gray: solid 0.1rem $gray;
@@ -29,9 +29,6 @@ html {
   color: $color;
   font: $font;
   user-select: none;
-  @include media-query {
-    font-size: 20px;
-  }
 }
 body {
   max-width: $max-width;
